@@ -1,0 +1,18 @@
+<div class="cart-container pa-3 app-flex">
+    <div>
+        <div class="cart-card app-flex mb-8" *ngFor="let product of addedToCartProducts;">
+            <div class="cart-image-container">
+                <img class="cart-img" src="{{product.product.image}}" alt="product-img">
+                <div class="app-flex cart-controls">
+                    <button class="minus py-3 px-1" (click)="removeFromCart(product.product.id)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    <div class="py-2 px-8">{{product.occurrence}}</div>
+                    <button class="plus py-3 px-1" (click)="addToCart(product.product.id)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+            </div>
+            <div class="pt-3 px-3">
+                <h4 class="ma-0">{{product.product.name}}</h4>
+                <div class="price"> &#8377; {{product.product.price}}</div>
+            </div>
+        </div>
+    </div>
+</div>

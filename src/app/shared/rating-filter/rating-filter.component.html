@@ -1,0 +1,39 @@
+<div class="rating-filter mb-4 pb-4">
+    <h5 class="my-1"> Filter By Rating </h5>
+    <button class="rating-btn my-1 px-3 pt-1" (click)="selectRating(1)" [ngClass]="{'btn-select' : rating1Selected}">
+        @for (rating of ratings; track rating) {
+            <i *ngIf="rating <= 1; else emptyRatingBtn1" class="fa fa-star mr-1" aria-hidden="true"></i>
+            <ng-template #emptyRatingBtn1>
+                <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
+            </ng-template>
+        }
+        <span class="pl-1"> & Up </span>
+    </button>
+    <button class="rating-btn my-1 px-3 pt-1" (click)="selectRating(2)" [ngClass]="{'btn-select' : rating2Selected}">
+        @for (rating of ratings; track rating) {
+            <i *ngIf="rating <= 2; else emptyRatingBtn1" class="fa fa-star mr-1" aria-hidden="true"></i>
+            <ng-template #emptyRatingBtn1>
+                <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
+            </ng-template>
+        }
+        <span class="pl-1"> & Up </span>
+    </button>
+    <button class="rating-btn my-1 px-3 pt-1" (click)="selectRating(3)" [ngClass]="{'btn-select' : rating3Selected}">
+        @for (rating of ratings; track rating) {
+            <i *ngIf="rating <= 3; else emptyRatingBtn1" class="fa fa-star mr-1" aria-hidden="true"></i>
+            <ng-template #emptyRatingBtn1>
+                <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
+            </ng-template>
+        }
+        <span class="pl-1"> & Up </span>
+    </button>
+    <button class="rating-btn my-1 px-3 pt-1" (click)="selectRating(4)" [ngClass]="{'btn-select' : rating4Selected}">
+        @for (rating of ratings; track rating) {
+            <i *ngIf="rating <= 4; else emptyRatingBtn1" class="fa fa-star mr-1" aria-hidden="true"></i>
+            <ng-template #emptyRatingBtn1>
+                <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
+            </ng-template>
+        }
+        <span class="pl-1"> & Up </span>
+    </button>
+</div>

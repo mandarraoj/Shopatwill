@@ -1,0 +1,21 @@
+.rating-filter {
+    border-bottom: 1px solid #DDD;
+    .rating-btn {
+        display: block;
+        border: none;
+        border-radius: 4px;
+        background-color: transparent;
+    
+        span {
+            vertical-align: top;
+        }
+    }
+    
+    .rating-btn:hover {
+        background-color: #EEEEEE;
+    }
+
+    .btn-select {
+        background-color: #EDEDED;
+    }
+}

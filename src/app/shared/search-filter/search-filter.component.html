@@ -1,0 +1,10 @@
+<div class="search-filter mb-3 pb-4">
+    <h5 class="my-1"> {{ title }} </h5>
+    <div class="searchable-select">
+        <input type="text" placeholder="Search" [(ngModel)]="searchText" #searchInput class="px-2 py-2" (input)="filterOptions()"/>
+        <div appMatchWidth *ngIf="searchText && filteredOptions.length" class="dropdwon-menu">
+            <div *ngFor="let option of filteredOptions;" class="pa-2 drpdown-item" (click)="selectOption(option)">{{ option.name }} </div>
+        </div>
+        <!-- <p *ngIf="selectedOption">Selected: {{ selectedOption }}</p> -->
+    </div>
+</div>

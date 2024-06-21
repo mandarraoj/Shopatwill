@@ -1,0 +1,34 @@
+<div class="product-container pa-3 app-flex">
+    <ng-container *ngIf="productList.length > 0; else noProductTemplate">
+        <div *ngFor="let product of productList" class="product-card ma-4">
+            <div>
+                <img src="{{product.image}}" alt="nike sneakers" class="product-img">
+            </div>
+            <div class="pt-3 px-3">
+                <h4 class="ma-0">{{product.name}}</h4>
+                <div class="price"> &#8377; {{product.price}}</div>
+            </div>
+            <div class="pa-3 product-info">
+                <p class="description my-1">{{product.description}}</p>
+            </div>
+            <div class="pa-3 ratings">
+                <button class="ratings-badge pt-1 px-2" [ngClass]="statusByRating(product.rating)">{{product.rating}} <i class="fa fa-star ml-1" aria-hidden="true"></i> </button>
+            </div>
+            <div class="card-action pa-3">
+                <button class="wishlist-btn pa-2" (click)="addToWishlist(product.id)">
+                    <i *ngIf="!wishList.includes(product.id); else wishlisted" class="fa fa-heart" aria-hidden="true"></i> 
+                    <ng-template #wishlisted>
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    </ng-template>
+                </button>
+                <button class="add-cart-btn pa-2" (click)="addToCart(product.id)"> <i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i> <span class="cart-btn-title">Add to Cart</span> </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #noProductTemplate>
+        <div class="no-product-container">
+            <h1>Products Not Found <i class="fa fa-exclamation-circle ml-2" aria-hidden="true"></i></h1>
+        </div>
+    </ng-template>
+
+</div>

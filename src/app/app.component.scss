@@ -1,0 +1,13 @@
+.main-section {
+    height: calc(100vh - 165px);
+}
+
+.sidebar {
+    flex: 0 0 12%;
+    border-right: 1px solid #cccc;
+    box-shadow: 1px 0px 5px #bbb;
+}
+
+.router-container {
+    flex-grow: 1;
+}

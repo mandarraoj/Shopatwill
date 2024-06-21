@@ -1,0 +1,277 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Standard Spacing Classes */ 
+
+// Padding (all sides)
+.pa-0 {padding: 0;}
+.pa-1 {padding: 0.25rem;}
+.pa-2 {padding: 0.50rem;}
+.pa-3 {padding: 0.75rem;}
+.pa-4 {padding: 1rem;}
+.pa-5 {padding: 1.25rem;}
+.pa-6 {padding: 1.50rem;}
+.pa-7 {padding: 1.75rem;}
+.pa-8 {padding: 2rem;}
+
+// Padding (top)
+.pt-0 {padding-top: 0;}
+.pt-1 {padding-top: 0.25rem;}
+.pt-2 {padding-top: 0.50rem;}
+.pt-3 {padding-top: 0.75rem;}
+.pt-4 {padding-top: 1rem;}
+.pt-5 {padding-top: 1.25rem;}
+.pt-6 {padding-top: 1.50rem;}
+.pt-7 {padding-top: 1.75rem;}
+.pt-8 {padding-top: 2rem;}
+
+// Padding (bottom)
+.pb-0 {padding-bottom: 0;}
+.pb-1 {padding-bottom: 0.25rem;}
+.pb-2 {padding-bottom: 0.50rem;}
+.pb-3 {padding-bottom: 0.75rem;}
+.pb-4 {padding-bottom: 1rem;}
+.pb-5 {padding-bottom: 1.25rem;}
+.pb-6 {padding-bottom: 1.50rem;}
+.pb-7 {padding-bottom: 1.75rem;}
+.pb-8 {padding-bottom: 2rem;}
+
+// Padding (left)
+.pl-0 {padding-left: 0;}
+.pl-1 {padding-left: 0.25rem;}
+.pl-2 {padding-left: 0.50rem;}
+.pl-3 {padding-left: 0.75rem;}
+.pl-4 {padding-left: 1rem;}
+.pl-5 {padding-left: 1.25rem;}
+.pl-6 {padding-left: 1.50rem;}
+.pl-7 {padding-left: 1.75rem;}
+.pl-8 {padding-left: 2rem;}
+
+// Padding (right)
+.pr-0 {padding-right: 0;}
+.pr-1 {padding-right: 0.25rem;}
+.pr-2 {padding-right: 0.50rem;}
+.pr-3 {padding-right: 0.75rem;}
+.pr-4 {padding-right: 1rem;}
+.pr-5 {padding-right: 1.25rem;}
+.pr-6 {padding-right: 1.50rem;}
+.pr-7 {padding-right: 1.75rem;}
+.pr-8 {padding-right: 2rem;}
+
+// Padding (horizontal)
+.px-0 {padding-left: 0; padding-right: 0;}
+.px-1 {padding-left: 0.25rem; padding-right: 0.25rem;}
+.px-2 {padding-left: 0.50rem; padding-right: 0.50rem;}
+.px-3 {padding-left: 0.75rem; padding-right: 0.75rem;}
+.px-4 {padding-left: 1rem; padding-right: 1rem;}
+.px-5 {padding-left: 1.25rem; padding-right: 1.25rem;}
+.px-7 {padding-left: 1.75rem; padding-right: 1.50rem;}
+.px-6 {padding-left: 1.50rem; padding-right: 1.75rem;}
+.px-8 {padding-left: 2rem; padding-right: 2rem;}
+
+// Padding (vertical)
+.py-0 {padding-top: 0; padding-bottom: 0;}
+.py-1 {padding-top: 0.25rem; padding-bottom: 0.25rem;}
+.py-2 {padding-top: 0.50rem; padding-bottom: 0.50rem;}
+.py-3 {padding-top: 0.75rem; padding-bottom: 0.75rem;}
+.py-4 {padding-top: 1rem; padding-bottom: 1rem;}
+.py-5 {padding-top: 1.25rem; padding-bottom: 1.25rem;}
+.py-7 {padding-top: 1.75rem; padding-bottom: 1.50rem;}
+.py-6 {padding-top: 1.50rem; padding-bottom: 1.75rem;}
+.py-8 {padding-top: 2rem; padding-bottom: 2rem;}
+
+// margin (all sides)
+.ma-0 {margin: 0;}
+.ma-1 {margin: 0.25rem;}
+.ma-2 {margin: 0.50rem;}
+.ma-3 {margin: 0.75rem;}
+.ma-4 {margin: 1rem;}
+.ma-5 {margin: 1.25rem;}
+.ma-6 {margin: 1.50rem;}
+.ma-7 {margin: 1.75rem;}
+.ma-8 {margin: 2rem;}
+
+// margin (top)
+.mt-0 {margin-top: 0;}
+.mt-1 {margin-top: 0.25rem;}
+.mt-2 {margin-top: 0.50rem;}
+.mt-3 {margin-top: 0.75rem;}
+.mt-4 {margin-top: 1rem;}
+.mt-5 {margin-top: 1.25rem;}
+.mt-6 {margin-top: 1.50rem;}
+.mt-7 {margin-top: 1.75rem;}
+.mt-8 {margin-top: 2rem;}
+
+// margin (bottom)
+.mb-0 {margin-bottom: 0;}
+.mb-1 {margin-bottom: 0.25rem;}
+.mb-2 {margin-bottom: 0.50rem;}
+.mb-3 {margin-bottom: 0.75rem;}
+.mb-4 {margin-bottom: 1rem;}
+.mb-5 {margin-bottom: 1.25rem;}
+.mb-6 {margin-bottom: 1.50rem;}
+.mb-7 {margin-bottom: 1.75rem;}
+.mb-8 {margin-bottom: 2rem;}
+
+// margin (left)
+.ml-0 {margin-left: 0;}
+.ml-1 {margin-left: 0.25rem;}
+.ml-2 {margin-left: 0.50rem;}
+.ml-3 {margin-left: 0.75rem;}
+.ml-4 {margin-left: 1rem;}
+.ml-5 {margin-left: 1.25rem;}
+.ml-6 {margin-left: 1.50rem;}
+.ml-7 {margin-left: 1.75rem;}
+.ml-8 {margin-left: 2rem;}
+
+// margin (right)
+.mr-0 {margin-right: 0;}
+.mr-1 {margin-right: 0.25rem;}
+.mr-2 {margin-right: 0.50rem;}
+.mr-3 {margin-right: 0.75rem;}
+.mr-4 {margin-right: 1rem;}
+.mr-5 {margin-right: 1.25rem;}
+.mr-6 {margin-right: 1.50rem;}
+.mr-7 {margin-right: 1.75rem;}
+.mr-8 {margin-right: 2rem;}
+
+// margin (horizontal)
+.mx-0 {margin-left: 0; margin-right: 0;}
+.mx-1 {margin-left: 0.25rem; margin-right: 0.25rem;}
+.mx-2 {margin-left: 0.50rem; margin-right: 0.50rem;}
+.mx-3 {margin-left: 0.75rem; margin-right: 0.75rem;}
+.mx-4 {margin-left: 1rem; margin-right: 1rem;}
+.mx-5 {margin-left: 1.25rem; margin-right: 1.25rem;}
+.mx-7 {margin-left: 1.75rem; margin-right: 1.50rem;}
+.mx-6 {margin-left: 1.50rem; margin-right: 1.75rem;}
+.mx-8 {margin-left: 2rem; margin-right: 2rem;}
+
+// margin (vertical)
+.my-0 {margin-top: 0; margin-bottom: 0;}
+.my-1 {margin-top: 0.25rem; margin-bottom: 0.25rem;}
+.my-2 {margin-top: 0.50rem; margin-bottom: 0.50rem;}
+.my-3 {margin-top: 0.75rem; margin-bottom: 0.75rem;}
+.my-4 {margin-top: 1rem; margin-bottom: 1rem;}
+.my-5 {margin-top: 1.25rem; margin-bottom: 1.25rem;}
+.my-7 {margin-top: 1.75rem; margin-bottom: 1.50rem;}
+.my-6 {margin-top: 1.50rem; margin-bottom: 1.75rem;}
+.my-8 {margin-top: 2rem; margin-bottom: 2rem;}
+
+//Global Custom Styles
+.app-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.fa-star, .fa-star-o{
+    color: #F19813;
+    font-size: 1rem;
+}
+
+.product-container, .wishlist-container, .cart-container {
+    height: calc(100vh - 188px);
+    flex-wrap: wrap;
+    overflow-y: auto;
+
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 18%;
+        border-radius: 10px;
+        box-shadow: 0 0 8px #AAAAAA;
+
+        .product-img {
+            height: 13rem;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid #DDDDDD;
+        }
+
+        .product-info {
+            min-height: 8rem;
+            max-height: 8rem;
+            overflow: auto;
+        }
+
+        .ratings {
+            .ratings-badge {
+                border: none;
+                border-radius: 5px;
+                color: #FFF;
+                background-color: darkred;
+                font-family: "Poppins", sans-serif;
+    
+                .fa-star {
+                    color: #FFF;
+                }
+            }
+            .good-rating {
+                background-color: #008000;
+            }
+            .average-rating {
+                background-color: #ffa500;
+            }
+            .poor-rating {
+                background-color: #bd0505;
+            }
+        }
+
+        .price {
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+        .description {
+            font-size: 14px;
+        }
+
+        .card-action {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            column-gap: 1.5rem;
+
+            .wishlist-btn {
+                background-color: #c94d4d;
+                border: none;
+                border-radius: 5px;
+
+                .fa-heart, .fa-check-circle {
+                    font-size: 1.25rem;
+                    color: #FFF;
+                }
+            }
+
+            .add-cart-btn {
+                background-color: #44a0ff;
+                border: none;
+                border-radius: 5px;
+                color: #FFF;
+                font-family: "Poppins", sans-serif;
+
+                .fa-shopping-cart {
+                    font-size: 1.25rem;
+                    vertical-align: top;
+                }
+
+                .cart-btn-title {
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+
+    .no-product-container {
+        width: 100%;
+        text-align: center;
+        margin: auto 0;
+        font-size: 3rem;
+        color: #aaa;
+    }
+}

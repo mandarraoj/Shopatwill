@@ -1,0 +1,31 @@
+.search-filter {
+    border-bottom: 1px solid #DDD;
+    .searchable-select {
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #999;
+            outline: none;
+            font-family: "Poppins", sans-serif;
+        }
+    
+        input:focus {
+            border: 2px solid #44a0ff;
+        }
+    
+        .dropdwon-menu {
+            background-color: #FEFEFE;
+            box-shadow: 0 0 5px #AAA;
+            position: absolute;
+    
+            .drpdown-item {
+                cursor: pointer;
+            }
+            .drpdown-item:hover {
+                background-color: #DDD;
+            }
+        }
+    }
+}
+

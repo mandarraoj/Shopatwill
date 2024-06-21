@@ -1,0 +1,23 @@
+<div class="app-flex pa-3 header">
+    <div class="app-flex">
+        <img src="../../assets/photos/company-logo.jpg" alt="company-logo" class="company-logo" routerLink="./home" routerLinkActive="true">
+        <h3 class="my-3" routerLink="./home" routerLinkActive="true">SHOPATWILL</h3>
+    </div>
+    <div class="header-action mr-4">
+        <div class="wishlist-icon" routerLink="./wishlist" routerLinkActive="true">
+            <i class="fa fa-heart mr-4" aria-hidden="true"></i>
+            <div *ngIf="wishlist.length > 0" class="wishlist-count">
+                <i class="fa fa-circle wishlist-circle" aria-hidden="true"></i>
+                <span class="count-info">{{wishlist.length}}</span>
+            </div>
+        </div>
+        <div class="cart-icon" routerLink="./cart" routerLinkActive="true">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <div *ngIf="addTocartIdsList.length > 0" class="add-cart-count">
+                <i class="fa fa-circle add-cart-circle" aria-hidden="true"></i>
+                <span class="count-info">{{addTocartIdsList.length}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>

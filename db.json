@@ -1,0 +1,144 @@
+{
+    "brands" : [
+        {
+            "id": 1,
+            "name": "Nike"
+        },
+        {
+            "id": 2,
+            "name": "Adidas"
+        },
+        {
+            "id": 3,
+            "name": "Samsung"
+        },
+        {
+            "id": 4,
+            "name": "LG"
+        },
+        {
+            "id": 5,
+            "name": "Apple"
+        },
+        {
+            "id": 6,
+            "name": "One Plus"
+        },
+        {
+            "id": 7,
+            "name": "Godrej"
+        },
+        {
+            "id": 8,
+            "name": "Vivo"
+        },
+        {
+            "id": 9,
+            "name": "Puma"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Mobile"
+        },
+        {
+            "id": 2,
+            "name": "Microwave"
+        },
+        {
+            "id": 3,
+            "name": "TV"
+        },
+        {
+            "id": 4,
+            "name": "Refrg"
+        },
+        {
+            "id": 5,
+            "name": "Shoes"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Nike Sneaker Phantom 2",
+            "price": 15000,
+            "rating": 1,
+            "categoryId": 5,
+            "brandId": 1,
+            "image":"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ff3766b5-59dd-4b9e-b755-751a3785d64d/court-vision-low-shoes-nRP2tZ.png",
+            "description":"This is Nike's newly launched Shoes for mainly trekking and hiking purposes. With Ergonomic and slick design, It has tight grip makes it very much suitable for trekking activities."
+        },
+        {
+            "id": 2,
+            "name": "Adidas Sports GX7",
+            "price": 2000,
+            "rating": 2,
+            "categoryId": 5,
+            "brandId": 2,
+            "image":"https://m.media-amazon.com/images/I/71wvP3YGFYL._AC_UL320_.jpg",
+            "description":"These are Adidas' budget friendly Shoes for All the sport activities. It has better grip and robust design. Soft Coushning inside and hard soul outside keeps your feet stable."
+        },
+        {
+            "id": 3,
+            "name": "Samsung S24 Ultra",
+            "price": 5000,
+            "rating": 3.5,
+            "categoryId": 1,
+            "brandId": 3,
+            "image":"https://m.media-amazon.com/images/I/81vxWpPpgNL._SX679_.jpg",
+            "description":"All time Android Lover's first choice. Best camera phone with 48 Megapixel rear triple camera and 32 megapixel front camera. 200x Zoom level makes great shots and Qualcomm Octa core processor makes it much faster than any other android phone in the market."
+        },
+        {
+            "id": 4,
+            "name": "LG 185 Refrigerator",
+            "price": 10000,
+            "rating": 4,
+            "categoryId": 4,
+            "brandId": 4,
+            "image":"https://m.media-amazon.com/images/I/71d9UtkxqcL._SX679_.jpg",
+            "description":"Direct Cool Refrigerator with Economical and stylish design. 5 Star Energy Rating and Best in class efficiency with Capacity of 185 liters. "
+        },
+        {
+            "id": 5,
+            "name": "Iphone 14 Pro",
+            "price": 100000,
+            "rating": 5,
+            "categoryId": 1,
+            "brandId": 5,
+            "image":"https://m.media-amazon.com/images/I/81qlME2wWmL._SX679_.jpg",
+            "description":" IPhone 15 Pro has a strong and light aerospace-grade titanium design with a textured matte-glass back. The 6.1” Super Retina XDR display with A Pro-class GPU makes mobile games feel so immersive, with rich environments and realistic characters."
+        },
+        {
+            "id": 6,
+            "name": "Godrej GMX120 Microwave Oven",
+            "price": 10000,
+            "rating": 2,
+            "categoryId": 2,
+            "brandId": 7,
+            "image":"https://m.media-amazon.com/images/I/71D6Y-JNzRL._SX679_.jpg",
+            "description":"Convection Microwave For baking along with grilling, reheating, defrosting and cooking. With 800 W of power cook faster and healthier. Capacity of 19 L, Suitable for small families / singles & couples"
+        },
+        {
+            "id": 7,
+            "name": "LG Smart LED TV",
+            "price": 10000,
+            "rating": 3,
+            "categoryId": 3,
+            "brandId": 4,
+            "image":"https://m.media-amazon.com/images/I/41tlcPxMOpL._SY300_SX300_QL70_FMwebp_.jpg",
+            "description":"Resolution of 4K Ultra HD (3840x2160) and Refresh Rate: 60 hertz. Connectivity with Wi-Fi (Built-in) | 3 HDMI ports to connect set top box, Blu Ray players, gaming console | 2 USB ports to connect hard drives and other USB devices | ALLM | eARC | Bluetooth 5.0 | Optical | Ethernet."
+        },
+        {
+            "id": 8,
+            "name": "Samsung Crystal HD TV",
+            "price": 10000,
+            "rating": 4,
+            "categoryId": 3,
+            "brandId": 3,
+            "image":"https://m.media-amazon.com/images/I/51uQxVnOAFL._SY300_SX300_QL70_FMwebp_.jpg",
+            "description":"Resolution of 4K Ultra HD (3840 x 2160) Resolution |Refresh Rate : 50 Hertz. Connectivity with 3 Hdmi Ports For Seamless Connectivity With External Devices | 1 X Usb-A Usb Ports To Connect Hard Drives Or Other Usb Devices |Wi-Fi | Bluetooth | Anynet+ (Hdmi-Cec)| Ethernet (Lan) Port| Rf In (Terrestrial / Cable Input / Satellite Input)."
+        }
+    ]
+}
