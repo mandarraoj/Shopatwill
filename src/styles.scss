@@ -185,7 +185,7 @@ body {
         flex-direction: column;
         flex: 0 0 18%;
         border-radius: 10px;
-        box-shadow: 0 0 8px #AAAAAA;
+        box-shadow: 0 0 8px #BBBBBB;
 
         .product-img {
             height: 13rem;
@@ -266,12 +266,15 @@ body {
             }
         }
     }
-
-    .no-product-container {
-        width: 100%;
-        text-align: center;
-        margin: auto 0;
-        font-size: 3rem;
-        color: #aaa;
+    .product-card:hover {
+        box-shadow: 0 0 10px 3px #BBBBBB;
     }
+}
+
+.no-product-container {
+    width: 100%;
+    text-align: center;
+    margin: auto 0;
+    font-size: 3rem;
+    color: #aaa;
 }

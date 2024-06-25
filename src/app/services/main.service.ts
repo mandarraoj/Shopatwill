@@ -17,6 +17,11 @@ export class MainService {
     return this.http.get<Reference[]>(apiUrl);
   }
 
+  getCategories(): Observable<Reference[]> {
+    const apiUrl = this.baseUrl+`categories`;
+    return this.http.get<Reference[]>(apiUrl);
+  }
+
   getProducts(): Observable<Product[]> {
     const apiUrl = this.baseUrl+`products`;
     return this.http.get<Product[]>(apiUrl);
