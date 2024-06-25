@@ -88,7 +88,12 @@ export class CartComponent implements OnInit{
   removeFromCart(productId: number) {
     const removeIndex = this.cartListIds.indexOf(productId);
     this.cartListIds.splice(removeIndex, 1);
-    console.log('cartListIds: ', this.cartListIds);
+    this.addedToCartProducts = this.addedToCartProducts.filter(e => productId !== e.product.id);
+
     this.filterService.updateAddToCart(this.cartListIds);
+  }
+
+  subTotalCalculator(price: number, multiplier: number) {
+    return price * multiplier;
   }
 }

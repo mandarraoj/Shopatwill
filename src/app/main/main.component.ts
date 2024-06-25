@@ -23,6 +23,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductsData();
+    this.getwishList();
   }
 
   getProducts() {
@@ -99,6 +100,18 @@ export class MainComponent implements OnInit {
     }
     console.log('Wishlist: ', this.wishList);
     this.filterService.updateWishlist(this.wishList);
+  }
+
+  getwishList() {
+    this.filterService.wishlist$.subscribe({
+      next: (res)=> {
+        console.log('wishlist Res: ', res);
+        this.wishList = res;
+      },
+      error: (err)=> {
+        console.log(err);
+      }
+    });
   }
 
   addToCart(id: number) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FilterEnum, FilterOption } from '../models/common.model';
+import { FilterOption } from '../models/common.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,9 @@ export class FilterService {
   private addToCartSubject$ = new BehaviorSubject<number[]>([]);
   addToCartObs$ = this.addToCartSubject$.asObservable();
 
+  private categoriesSubject$ = new BehaviorSubject<number>(0);
+  categories$ = this.categoriesSubject$.asObservable();
+
   constructor() { }
 
   updateFilterOption(filterOption: FilterOption){
@@ -28,5 +31,9 @@ export class FilterService {
 
   updateAddToCart(productIdList: number[]) {
     this.addToCartSubject$.next(productIdList);
+  }
+
+  updateCategory(category: number) {
+    this.categoriesSubject$.next(category);
   }
 }
