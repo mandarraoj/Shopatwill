@@ -1,0 +1,10 @@
+<div class="price-range-slider">
+    <input id="min-input" type="range" [min]="minPrice" [max]="maxPrice" [(ngModel)]="selectedMinPrice"
+        (input)="updatePriceRange($event, 'min')" class="slider min-slider" />
+    <input type="range" [min]="minPrice" [max]="maxPrice" [(ngModel)]="selectedMaxPrice"
+        (input)="updatePriceRange($event, 'max')" class="slider max-slider" />
+    <div class="slider-values">
+        <span>Min: {{ selectedMinPrice }}</span>
+        <span>Max: {{ selectedMaxPrice }}</span>
+    </div>
+</div>
