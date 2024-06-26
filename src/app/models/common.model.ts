@@ -17,10 +17,16 @@ export interface Product {
 export enum FilterEnum {
     BRAND = 'brand',
     RATING = 'rating',
-    CATEGORY = 'category'
+    CATEGORY = 'category',
+    PRICE_RANGE = 'price'
 }
 
 export interface FilterOption {
     label: FilterEnum,
-    value: number,
+    value: number | PriceRange,
+}
+
+export interface PriceRange {
+    minValue: number,
+    maxValue: number,
 }

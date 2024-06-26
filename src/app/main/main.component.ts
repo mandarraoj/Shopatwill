@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MainService } from '../services/main.service';
-import { FilterEnum, Product } from '../models/common.model';
+import { FilterEnum, PriceRange, Product } from '../models/common.model';
 import { CommonModule } from '@angular/common';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { FilterService } from '../services/filter.service';
@@ -44,21 +44,36 @@ export class MainComponent implements OnInit {
         const filterOption = res;
         switch (filterOption?.label) {
           case this.filterEnum.BRAND:
-            this.getProductsByBrand(filterOption.value);
+            this.getProductsByBrand(filterOption.value as number);
             break;
           
           case this.filterEnum.RATING:
-            this.getProductsByRating(filterOption.value);
+            this.getProductsByRating(filterOption.value as number);
             break;
 
           case this.filterEnum.CATEGORY:
-            filterOption.value != 0 ? this.getProductsByCategory(filterOption.value) : this.getProducts();
+            filterOption.value != 0 ? this.getProductsByCategory(filterOption.value as number) : this.getProducts();
+            break;
+
+          case this.filterEnum.PRICE_RANGE:
+            this.getProductsByPriceRange(filterOption.value as PriceRange);
             break;
       
           default:
             this.getProducts();
             break;
         }
+      },
+      error: (err)=> {
+        console.log(err);
+      }
+    });
+  }
+
+  getProductsByPriceRange(priceRange: PriceRange) {
+    this.mainService.getProducts().subscribe({
+      next: (res)=> {
+        this.productList = res.filter(e => (e.price >= priceRange.minValue && e.price <= priceRange.maxValue));
       },
       error: (err)=> {
         console.log(err);

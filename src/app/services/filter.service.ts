@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FilterOption } from '../models/common.model';
+import { FilterOption, PriceRange } from '../models/common.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,9 @@ export class FilterService {
   private addToCartSubject$ = new BehaviorSubject<number[]>([]);
   addToCartObs$ = this.addToCartSubject$.asObservable();
 
+  private priceRangeSubject$ = new BehaviorSubject<PriceRange>({minValue: 0, maxValue: 10000});
+  priceRange$ = this.priceRangeSubject$.asObservable();
+
   constructor() { }
 
   updateFilterOption(filterOption: FilterOption){
@@ -28,5 +31,9 @@ export class FilterService {
 
   updateAddToCart(productIdList: number[]) {
     this.addToCartSubject$.next(productIdList);
+  }
+
+  updatePriceRange(priceRange: PriceRange) {
+    this.priceRangeSubject$.next(priceRange);
   }
 }

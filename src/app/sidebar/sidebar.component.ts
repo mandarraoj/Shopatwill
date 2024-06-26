@@ -4,11 +4,12 @@ import { Reference } from '../models/common.model';
 import { Subscription } from 'rxjs';
 import { SearchFilterComponent } from '../shared/search-filter/search-filter.component';
 import { RatingFilterComponent } from '../shared/rating-filter/rating-filter.component';
+import { PriceRangeFilterComponent } from '../shared/price-range-filter/price-range-filter.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [SearchFilterComponent, RatingFilterComponent],
+  imports: [SearchFilterComponent, RatingFilterComponent, PriceRangeFilterComponent],
   providers: [MainService],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
