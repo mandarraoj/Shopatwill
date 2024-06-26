@@ -28,25 +28,18 @@ export class MainService {
   }
 
   getProductsByBrand(filterValue: number): Observable<Product[]> {
-    console.log('Filter brandId: ', filterValue);
     const apiUrl = this.baseUrl+`products?brandId=${filterValue}`;
     return this.http.get<Product[]>(apiUrl);
   }
 
   getProductsByRating(minRating: number): Observable<Product[]> {
-    console.log('minRating: ', minRating);
     let params = new HttpParams().set('rating_gte', minRating.toString());
     const apiUrl = this.baseUrl+`products`;
     return this.http.get<Product[]>(apiUrl, { params });
   }
 
-  getProductsByIds(ids: number[]): Observable<Product[]> {
-    let params = new HttpParams();
-    ids.forEach(id => {
-      params = params.append('id', id.toString());
-    });
-    console.log(params);
-    const apiUrl = this.baseUrl+`products`;
-    return this.http.get<Product[]>(apiUrl, {params});
+  getProductsByCategory(filterValue: number): Observable<Product[]> {
+    const apiUrl = this.baseUrl+`products?categoryId=${filterValue}`;
+    return this.http.get<Product[]>(apiUrl);
   }
 }

@@ -30,7 +30,6 @@ export class CartComponent implements OnInit{
   getCartList() {
     this.filterService.addToCartObs$.subscribe({
       next: (res)=> {
-        console.log('cart list Res: ', res);
         this.cartListIds = res;
         this.getProducts(this.cartListIds);
       },
@@ -43,7 +42,6 @@ export class CartComponent implements OnInit{
   getProducts(idList:number[]) {
     this.mainService.getProducts().subscribe({
       next: (res)=> {
-        console.log('products: ', res);
         let productsList = [];
         productsList = res.filter(e => idList.includes(e.id));
 
@@ -56,7 +54,6 @@ export class CartComponent implements OnInit{
             occurrenceMap.set(element, 1);
           }
         });
-        console.log('occuranceMap: ',occurrenceMap);
 
         occurrenceMap.forEach((value, key) => {
           const product = productsList.filter(e => e.id === key);
@@ -71,7 +68,6 @@ export class CartComponent implements OnInit{
             this.addedToCartProducts.push({ product: product[0], occurrence: value });
           }
         });
-        console.log('Filtered cart list: ', this.addedToCartProducts);
       },
       error: (err)=> {
         console.log(err);
@@ -81,7 +77,6 @@ export class CartComponent implements OnInit{
 
   addToCart(productId: number) {
     this.cartListIds.push(productId);
-    console.log('cartListIds: ', this.cartListIds);
     this.filterService.updateAddToCart(this.cartListIds);
   }
 
@@ -89,7 +84,6 @@ export class CartComponent implements OnInit{
     const removeIndex = this.cartListIds.indexOf(productId);
     this.cartListIds.splice(removeIndex, 1);
     this.addedToCartProducts = this.addedToCartProducts.filter(e => productId !== e.product.id);
-
     this.filterService.updateAddToCart(this.cartListIds);
   }
 

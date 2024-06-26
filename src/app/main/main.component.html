@@ -12,7 +12,7 @@
                 <p class="description my-1">{{product.description}}</p>
             </div>
             <div class="pa-3 ratings">
-                <button class="ratings-badge pt-1 px-2" [ngClass]="statusByRating(product.rating)">{{product.rating}} <i class="fa fa-star ml-1" aria-hidden="true"></i> </button>
+                <button class="ratings-badge pt-1 px-2" [ngClass]="utilitiesService.statusByRating(product.rating)">{{product.rating}} <i class="fa fa-star ml-1" aria-hidden="true"></i> </button>
             </div>
             <div class="card-action pa-3">
                 <button class="wishlist-btn pa-2" (click)="addToWishlist(product.id)">
