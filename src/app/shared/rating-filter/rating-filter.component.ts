@@ -54,7 +54,6 @@ export class RatingFilterComponent {
           this.rating4Selected = false;
         break;
     }
-    console.log(this.selectedOption);
     this.filterService.updateFilterOption({label: this.filterEnum.RATING, value: this.selectedOption});
   }
 

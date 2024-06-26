@@ -4,6 +4,7 @@ import { FilterEnum, Product } from '../models/common.model';
 import { CommonModule } from '@angular/common';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { FilterService } from '../services/filter.service';
+import { UtilitiesService } from '../shared/utilities/utilities.service';
 
 @Component({
   selector: 'app-main',
@@ -19,7 +20,7 @@ export class MainComponent implements OnInit {
   filterEnum = FilterEnum;
   wishList: number[] = [];
   addToCartList: number[] = [];
-  constructor(private mainService:MainService, private filterService: FilterService) {}
+  constructor(private mainService:MainService, private filterService: FilterService, public utilitiesService: UtilitiesService) {}
 
   ngOnInit(): void {
     this.getProductsData();
@@ -30,7 +31,6 @@ export class MainComponent implements OnInit {
     this.mainService.getProducts().subscribe({
       next: (res)=> {
         this.productList = res;
-        console.log('prodcuct List: ', this.productList);
       },
       error: (err)=> {
         console.log(err);
@@ -41,7 +41,6 @@ export class MainComponent implements OnInit {
   getProductsData() {
     this.filterService.filterByOption$.subscribe({
       next: (res)=> {
-        console.log('filterOptions: ', res);
         const filterOption = res;
         switch (filterOption?.label) {
           case this.filterEnum.BRAND:
@@ -50,6 +49,10 @@ export class MainComponent implements OnInit {
           
           case this.filterEnum.RATING:
             this.getProductsByRating(filterOption.value);
+            break;
+
+          case this.filterEnum.CATEGORY:
+            filterOption.value != 0 ? this.getProductsByCategory(filterOption.value) : this.getProducts();
             break;
       
           default:
@@ -66,7 +69,6 @@ export class MainComponent implements OnInit {
   getProductsByBrand(brandfilter: number) {
     this.mainService.getProductsByBrand(brandfilter).subscribe({
       next: (res)=> {
-        console.log('get products by brands', res);
         this.productList = res;
       },
       error: (err)=> {
@@ -78,7 +80,6 @@ export class MainComponent implements OnInit {
   getProductsByRating(minRating: number) {
     this.mainService.getProductsByRating(minRating).subscribe({
       next: (res)=> {
-        console.log('get products by rating', res);
         this.productList = res;
       },
       error: (err)=> {
@@ -87,8 +88,15 @@ export class MainComponent implements OnInit {
     });
   }
 
-  statusByRating(rating: number) {
-    return rating >=3.5 && rating <=5 ? 'good-rating' : (rating >= 2 && rating < 3.5 ? 'average-rating' : 'poor-rating')
+  getProductsByCategory(categoryFilter: number) {
+    this.mainService.getProductsByCategory(categoryFilter).subscribe({
+      next: (res) => {
+        this.productList = res;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   addToWishlist(id: number) {
@@ -98,14 +106,12 @@ export class MainComponent implements OnInit {
       const removeIndex = this.wishList.indexOf(id);
       this.wishList.splice(removeIndex, 1);
     }
-    console.log('Wishlist: ', this.wishList);
     this.filterService.updateWishlist(this.wishList);
   }
 
   getwishList() {
     this.filterService.wishlist$.subscribe({
       next: (res)=> {
-        console.log('wishlist Res: ', res);
         this.wishList = res;
       },
       error: (err)=> {
@@ -116,7 +122,6 @@ export class MainComponent implements OnInit {
 
   addToCart(id: number) {
     this.addToCartList.push(id);
-    console.log('addToCartList: ', this.addToCartList);
     this.filterService.updateAddToCart(this.addToCartList);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../services/main.service';
 import { FilterService } from '../services/filter.service';
-import { Reference } from '../models/common.model';
+import { FilterEnum, FilterOption, Reference } from '../models/common.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,17 +14,27 @@ import { CommonModule } from '@angular/common';
 export class MenuComponent implements OnInit {
 
   categories: Reference[] = [];
+  filterEnum = FilterEnum;
   constructor(private mainService: MainService, private filterService: FilterService){}
 
   ngOnInit(): void {
-    this.mainService.getCategories().subscribe(res => {
-      console.log('Categories: ', res);
-      this.categories = res;
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.mainService.getCategories().subscribe({
+      next: (res) => {
+        this.categories = res;
+      },
+      error: (err) => {
+        console.log(err);
+      }
     });
   }
 
   selectCategory(id: number) {
-    this.filterService.updateCategory(id);
+    const filterOptions:FilterOption = {label: this.filterEnum.CATEGORY, value: id};
+    this.filterService.updateFilterOption(filterOptions);
   }
 
 }

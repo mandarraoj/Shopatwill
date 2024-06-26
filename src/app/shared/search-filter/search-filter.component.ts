@@ -34,7 +34,6 @@ export class SearchFilterComponent {
   }
 
   selectOption(option: Reference) {
-    console.log(option);
     this.selectedOption = option.name;
     this.selectedOptionId = option.id;
     this.searchInput.nativeElement.value = this.selectedOption;

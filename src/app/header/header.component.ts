@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
   getwishList() {
     this.filterService.wishlist$.subscribe({
       next: (res)=> {
-        console.log('wishlist Res: ', res);
         this.wishlist = res;
       },
       error: (err)=> {
@@ -36,7 +35,6 @@ export class HeaderComponent implements OnInit {
   getaddToCartIdsList() {
     this.filterService.addToCartObs$.subscribe({
       next: (res)=> {
-        console.log('Add to cart List: ', res);
         this.addTocartIdsList = res;
       },
       error: (err)=> {

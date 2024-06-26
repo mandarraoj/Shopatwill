@@ -27,7 +27,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   getBrands(){
     this.brandsSubscription = this.mainService.getBrands().subscribe({
       next: (res)=> {
-        console.log('brands: ', res);
         this.brands = res;
       },
       error: (err)=> {
