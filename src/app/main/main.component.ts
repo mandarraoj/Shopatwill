@@ -2,14 +2,19 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/co
 import { MainService } from '../services/main.service';
 import { FilterEnum, PriceRange, Product } from '../models/common.model';
 import { CommonModule } from '@angular/common';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { Observable, debounceTime, distinctUntilChanged } from 'rxjs';
 import { FilterService } from '../services/filter.service';
 import { UtilitiesService } from '../shared/utilities/utilities.service';
+import { CounterComponent } from '../shared/counter/counter.component';
+import { AppState } from '../states/app.state';
+import { Store } from '@ngrx/store';
+import { getAllproducts } from '../states/products/product.action';
+import { selecProductError, selectAllProducts } from '../states/products/product.selector';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CounterComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
@@ -20,7 +25,11 @@ export class MainComponent implements OnInit {
   filterEnum = FilterEnum;
   wishList: number[] = [];
   addToCartList: number[] = [];
-  constructor(private mainService:MainService, private filterService: FilterService, public utilitiesService: UtilitiesService) {}
+
+  products$!: Observable<Product[]>;
+  error!: Observable<string | null>; 
+
+  constructor(private store: Store<AppState>,private mainService:MainService, private filterService: FilterService, public utilitiesService: UtilitiesService) {}
 
   ngOnInit(): void {
     this.getProductsData();
@@ -28,13 +37,15 @@ export class MainComponent implements OnInit {
   }
 
   getProducts() {
-    this.mainService.getProducts().subscribe({
-      next: (res)=> {
-        this.productList = res;
-      },
-      error: (err)=> {
-        console.log(err);
-      }
+    this.store.dispatch(getAllproducts());
+    this.products$ = this.store.select(selectAllProducts);
+    this.error = this.store.select(selecProductError);
+    this.error.subscribe((err) => {
+      console.log("State Management Error: ", err);
+    });
+    this.products$.subscribe((res)=> {
+      console.log('State Management is Working!!!: ', res);
+      this.productList = res;
     });
   }
 

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FilterService } from '../services/filter.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AppState } from '../states/app.state';
+import { Observable } from 'rxjs';
+import { selectCount } from '../states/counter/counter.selector';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +17,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class HeaderComponent implements OnInit {
   wishlist: number[] = [];
   addTocartIdsList: number[] = [];
+  count$: Observable<number>;
 
-  constructor(private filterService: FilterService) {}
+  constructor(private filterService: FilterService, private store: Store<AppState>) {
+    this.count$ = this.store.select(selectCount);
+  }
 
   ngOnInit(): void {
     this.getwishList();
