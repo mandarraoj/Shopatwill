@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Product } from "../../models/common.model";
-import { getAllProductsFailure, getAllProductsSuccess } from "./product.action";
+import { getAllProductsFailure, getProductsSuccess } from "./product.action";
 
 export interface ProductState {
     products: Product[];
@@ -14,7 +14,7 @@ export const initialProductState: ProductState = {
 
 export const ProductReducer = createReducer(
     initialProductState,
-    on(getAllProductsSuccess, (state, {products}) => ({
+    on(getProductsSuccess, (state, {products}) => ({
         ...state,
         products,
         error: null
