@@ -2,7 +2,19 @@
     background-color: #505050;
     color: #FFF;
     justify-content: space-between;
-    font-size: 0.75rem;
+
+    .social-media {
+        align-items: center;
+        gap: 1rem;
+
+        i:hover {
+            color: #44A0FF;
+            cursor: pointer;
+        }
+    }
+    .ownership {
+        font-size: 0.75rem;
+    }
 
     .author {
         color: #44A0FF;
