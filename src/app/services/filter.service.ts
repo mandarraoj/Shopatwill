@@ -21,7 +21,7 @@ export class FilterService {
 
   constructor() { }
 
-  updateFilterOption(filterOption: FilterOption){
+  updateFilterOption(filterOption: FilterOption | null){
     this.filterOption$.next(filterOption);
   }
 

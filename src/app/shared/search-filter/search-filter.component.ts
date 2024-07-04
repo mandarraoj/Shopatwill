@@ -28,9 +28,14 @@ export class SearchFilterComponent {
   selectedOptionId?: number;
 
   filterOptions() {
-    this.filteredOptions = this.options.filter(option =>
-      option.name.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+    if(this.searchText.length != 0) {
+      this.filteredOptions = this.options.filter(option =>
+        option.name.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    } else {
+      this.filteredOptions = [];
+      this.filterService.updateFilterOption(null);
+    }
   }
 
   selectOption(option: Reference) {

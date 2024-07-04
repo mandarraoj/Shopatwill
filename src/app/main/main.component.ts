@@ -8,7 +8,7 @@ import { UtilitiesService } from '../shared/utilities/utilities.service';
 import { CounterComponent } from '../shared/counter/counter.component';
 import { AppState } from '../states/app.state';
 import { Store } from '@ngrx/store';
-import { getAllproducts } from '../states/products/product.action';
+import { getAllproducts, getProductsByBrand } from '../states/products/product.action';
 import { selecProductError, selectAllProducts } from '../states/products/product.selector';
 
 @Component({
@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
   addToCartList: number[] = [];
 
   products$!: Observable<Product[]>;
-  error!: Observable<string | null>; 
+  error$!: Observable<string | null>; 
 
   constructor(private store: Store<AppState>,private mainService:MainService, private filterService: FilterService, public utilitiesService: UtilitiesService) {}
 
@@ -39,14 +39,7 @@ export class MainComponent implements OnInit {
   getProducts() {
     this.store.dispatch(getAllproducts());
     this.products$ = this.store.select(selectAllProducts);
-    this.error = this.store.select(selecProductError);
-    this.error.subscribe((err) => {
-      console.log("State Management Error: ", err);
-    });
-    this.products$.subscribe((res)=> {
-      console.log('State Management is Working!!!: ', res);
-      this.productList = res;
-    });
+    this.error$ = this.store.select(selecProductError);
   }
 
   getProductsData() {
@@ -93,14 +86,10 @@ export class MainComponent implements OnInit {
   }
 
   getProductsByBrand(brandfilter: number) {
-    this.mainService.getProductsByBrand(brandfilter).subscribe({
-      next: (res)=> {
-        this.productList = res;
-      },
-      error: (err)=> {
-        console.log(err);
-      }
-    });
+    console.log(brandfilter);
+    this.store.dispatch(getProductsByBrand({brandId: brandfilter}));
+    this.products$ = this.store.select(selectAllProducts);
+    this.error$ = this.store.select(selecProductError);
   }
 
   getProductsByRating(minRating: number) {
