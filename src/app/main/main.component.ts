@@ -8,13 +8,13 @@ import { UtilitiesService } from '../shared/utilities/utilities.service';
 import { CounterComponent } from '../shared/counter/counter.component';
 import { AppState } from '../states/app.state';
 import { Store } from '@ngrx/store';
-import { getAllproducts, getProductsByBrand } from '../states/products/product.action';
+import { getAllproducts, getProductsByBrand, getProductsByRating } from '../states/products/product.action';
 import { selecProductError, selectAllProducts } from '../states/products/product.selector';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, CounterComponent],
+  imports: [CommonModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
@@ -86,21 +86,15 @@ export class MainComponent implements OnInit {
   }
 
   getProductsByBrand(brandfilter: number) {
-    console.log(brandfilter);
     this.store.dispatch(getProductsByBrand({brandId: brandfilter}));
     this.products$ = this.store.select(selectAllProducts);
     this.error$ = this.store.select(selecProductError);
   }
 
   getProductsByRating(minRating: number) {
-    this.mainService.getProductsByRating(minRating).subscribe({
-      next: (res)=> {
-        this.productList = res;
-      },
-      error: (err)=> {
-        console.log(err);
-      }
-    });
+    this.store.dispatch(getProductsByRating({minRating: minRating}));
+    this.products$ = this.store.select(selectAllProducts);
+    this.error$ = this.store.select(selecProductError);
   }
 
   getProductsByCategory(categoryFilter: number) {

@@ -1,6 +1,3 @@
-<div>
-    <app-counter></app-counter>
-</div>
 <div class="product-container pa-3 app-flex">
     <ng-container *ngIf="(products$ | async)!.length > 0; else noProductTemplate">
         <div *ngFor="let product of products$ | async" class="product-card ma-4">
