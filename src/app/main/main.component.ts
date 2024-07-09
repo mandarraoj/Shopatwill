@@ -1,14 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MainService } from '../services/main.service';
+import { Component, OnInit } from '@angular/core';
 import { FilterEnum, PriceRange, Product } from '../models/common.model';
 import { CommonModule } from '@angular/common';
-import { Observable, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { FilterService } from '../services/filter.service';
 import { UtilitiesService } from '../shared/utilities/utilities.service';
-import { CounterComponent } from '../shared/counter/counter.component';
 import { AppState } from '../states/app.state';
 import { Store } from '@ngrx/store';
-import { getAllproducts, getProductsByBrand, getProductsByRating } from '../states/products/product.action';
+import { getAllproducts } from '../states/products/product.action';
 import { selecProductError, selectAllProducts } from '../states/products/product.selector';
 
 @Component({
@@ -27,44 +25,46 @@ export class MainComponent implements OnInit {
   addToCartList: number[] = [];
 
   products$!: Observable<Product[]>;
+  filteredProducts$!: Observable<Product[]>;
   error$!: Observable<string | null>; 
 
-  constructor(private store: Store<AppState>,private mainService:MainService, private filterService: FilterService, public utilitiesService: UtilitiesService) {}
+  constructor(private store: Store<AppState>, private filterService: FilterService, public utilitiesService: UtilitiesService) {}
 
   ngOnInit(): void {
-    this.getProductsData();
+    this.getProducts();
     this.getwishList();
   }
 
   getProducts() {
     this.store.dispatch(getAllproducts());
     this.products$ = this.store.select(selectAllProducts);
+    this.getFilteredProducts();
     this.error$ = this.store.select(selecProductError);
   }
 
-  getProductsData() {
+  getFilteredProducts() {
     this.filterService.filterByOption$.subscribe({
       next: (res)=> {
         const filterOption = res;
         switch (filterOption?.label) {
           case this.filterEnum.BRAND:
-            this.getProductsByBrand(filterOption.value as number);
+            this.filterProductsByBrand(filterOption.value as number);
             break;
           
           case this.filterEnum.RATING:
-            this.getProductsByRating(filterOption.value as number);
+            this.filterProductsByRating(filterOption.value as number);
             break;
 
           case this.filterEnum.CATEGORY:
-            filterOption.value != 0 ? this.getProductsByCategory(filterOption.value as number) : this.getProducts();
+            filterOption.value != 0 ? this.filterProductsByCategory(filterOption.value as number) : this.filterAllProducts();
             break;
 
           case this.filterEnum.PRICE_RANGE:
-            this.getProductsByPriceRange(filterOption.value as PriceRange);
+            this.filterProductsByPriceRange(filterOption.value as PriceRange);
             break;
       
           default:
-            this.getProducts();
+            this.filterAllProducts();
             break;
         }
       },
@@ -74,38 +74,32 @@ export class MainComponent implements OnInit {
     });
   }
 
-  getProductsByPriceRange(priceRange: PriceRange) {
-    this.mainService.getProducts().subscribe({
-      next: (res)=> {
-        this.productList = res.filter(e => (e.price >= priceRange.minValue && e.price <= priceRange.maxValue));
-      },
-      error: (err)=> {
-        console.log(err);
-      }
-    });
+  filterAllProducts() {
+    this.filteredProducts$ = this.products$;
   }
 
-  getProductsByBrand(brandfilter: number) {
-    this.store.dispatch(getProductsByBrand({brandId: brandfilter}));
-    this.products$ = this.store.select(selectAllProducts);
-    this.error$ = this.store.select(selecProductError);
+  filterProductsByPriceRange(priceRange: PriceRange) {
+    this.filteredProducts$ = this.products$.pipe(
+      map(products => products.filter(product => (product.price >= priceRange.minValue && product.price <= priceRange.maxValue)))
+    );
   }
 
-  getProductsByRating(minRating: number) {
-    this.store.dispatch(getProductsByRating({minRating: minRating}));
-    this.products$ = this.store.select(selectAllProducts);
-    this.error$ = this.store.select(selecProductError);
+  filterProductsByBrand(brandfilter: number) {
+    this.filteredProducts$ = this.products$.pipe(
+      map(products => products.filter(product => product.brandId.toString() === brandfilter.toString()))
+    );
   }
 
-  getProductsByCategory(categoryFilter: number) {
-    this.mainService.getProductsByCategory(categoryFilter).subscribe({
-      next: (res) => {
-        this.productList = res;
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+  filterProductsByRating(minRating: number) {
+    this.filteredProducts$ = this.products$.pipe(
+      map(products => products.filter(product => product.rating >= minRating))
+    );
+  }
+
+  filterProductsByCategory(categoryFilter: number) {
+    this.filteredProducts$ = this.products$.pipe(
+      map(products => products.filter(product => product.categoryId.toString() === categoryFilter.toString()))
+    );
   }
 
   addToWishlist(id: number) {

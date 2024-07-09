@@ -117,7 +117,7 @@
         {
             "id": 6,
             "name": "Godrej GMX120 Microwave Oven",
-            "price": 10000,
+            "price": 25000,
             "rating": 2,
             "categoryId": 2,
             "brandId": 7,
@@ -127,7 +127,7 @@
         {
             "id": 7,
             "name": "LG Smart LED TV",
-            "price": 10000,
+            "price": 45000,
             "rating": 3,
             "categoryId": 3,
             "brandId": 4,
@@ -137,7 +137,7 @@
         {
             "id": 8,
             "name": "Samsung Crystal HD TV",
-            "price": 10000,
+            "price": 78500,
             "rating": 4,
             "categoryId": 3,
             "brandId": 3,
