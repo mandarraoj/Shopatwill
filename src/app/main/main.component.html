@@ -1,6 +1,6 @@
 <div class="product-container pa-3 app-flex">
-    <ng-container *ngIf="(products$ | async)!.length > 0; else noProductTemplate">
-        <div *ngFor="let product of products$ | async" class="product-card ma-4">
+    <ng-container *ngIf="(filteredProducts$ | async)!.length > 0; else noProductTemplate">
+        <div *ngFor="let product of filteredProducts$ | async" class="product-card ma-4">
             <div>
                 <img src="{{product.image}}" alt="nike sneakers" class="product-img">
             </div>
