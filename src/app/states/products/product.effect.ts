@@ -14,7 +14,9 @@ export class ProductEffect {
             ofType(getAllproducts),
             switchMap(() =>
                 this.mainService.getProducts().pipe(
-                    map((res) => getProductsSuccess({ products: res })),
+                    map((res) => {
+                        console.log(res);
+                        return getProductsSuccess({ products: res })}),
                     catchError((error: { message: string }) => of(getAllProductsFailure({ errorMessage: error.message })
                 ))
                 )

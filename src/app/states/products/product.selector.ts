@@ -5,7 +5,7 @@ export const selectProductFeature = createFeatureSelector<ProductState>('product
 
 export const selectAllProducts = createSelector(
     selectProductFeature,
-    (state: ProductState) => state.products
+    (state: ProductState) => state?.products
 )
 
 export const selecProductError = createSelector(

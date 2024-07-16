@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { BehaviorSubject, Observable, Subject, catchError, throwError } from 'rxjs';
 import { Product, Reference } from '../models/common.model';
 
 @Injectable({
@@ -14,17 +14,29 @@ export class MainService {
 
   getBrands(): Observable<Reference[]> {
     const apiUrl = this.baseUrl+`brands`;
-    return this.http.get<Reference[]>(apiUrl);
+    return this.http.get<Reference[]>(apiUrl).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => error.message);
+      })
+    );
   }
 
   getCategories(): Observable<Reference[]> {
     const apiUrl = this.baseUrl+`categories`;
-    return this.http.get<Reference[]>(apiUrl);
+    return this.http.get<Reference[]>(apiUrl).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => error.message);
+      })
+    );
   }
 
   getProducts(): Observable<Product[]> {
     const apiUrl = this.baseUrl+`products`;
-    return this.http.get<Product[]>(apiUrl);
+    return this.http.get<Product[]>(apiUrl).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => error.message);
+      })
+    );
   }
 
   getProductsByBrand(filterValue: number): Observable<Product[]> {
